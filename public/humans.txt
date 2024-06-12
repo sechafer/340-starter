@@ -1,0 +1,37 @@
+# What is humans.txt? It's a TXT file that contains information about the different people who have contributed to building this website.
+# This helps for questions about the functionality and future development.
+# For more information on this file visit humanstxt.org
+
+# The humans responsible & technology colophon
+==============================================
+
+# TEAM
+
+    CSE-340
+    	Name:  Samuel Chacon
+    	Role: Student Developer
+        @kittys201
+
+
+# THANKS
+
+Kitty
+
+
+
+# TECHNOLOGY COLOPHON
+
+    Standards: JavaScript, HTML5, CSS3
+    Components: 
+
+# SITE
+
+    Site Name: CSE Motors
+    Site URL: https://three40-starter-k3jt.onrender.com/
+    Version: 1.0.0
+	Last updated: 2024-06-12
+    Creation date: 2024-06-12
+	Language: English
+	Doctype: HTML5
+	IDE: VS Code
+    License: MIT
