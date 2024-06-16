@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Share+Tech&display=swap');
 /******* Change Box Model ***************/
 *,
 *:before,
@@ -5,7 +6,7 @@
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Share+Tech&display=swap');
+
 
 /* Mobile styles */
 * {
