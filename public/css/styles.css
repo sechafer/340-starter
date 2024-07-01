@@ -263,7 +263,31 @@ section {
 hr {
   border: 1px solid black;
 }
-
+#details-display {
+  display: grid;
+  grid-template-columns: repeat(2,.5fr);
+}
+#details-display img {
+  width:100%;
+}
+.description {
+  padding: 0 4%;
+}
+.description p {
+  margin: 0;
+  padding: 3%;
+}
+.bold {
+  font-weight: bolder;
+}
+.bg-color {
+  background-color: rgba(128, 128, 128, 0.097);
+  padding: 3%;
+}
+#details-display-error {
+  background-color: rgba(127, 255, 212, 0.082);
+  padding: .8%;
+}
 /* desktop Style */
 @media screen and (min-width: 800px) {
   
@@ -332,4 +356,12 @@ hr {
   .card-container {
     font-size: 1.8vw;
   }
+  #details-display {
+    display:flex;
+    flex-direction: column;
+  }
+  .description {
+    padding: 0 ;
+  }
+
 }
