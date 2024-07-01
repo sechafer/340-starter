@@ -233,6 +233,37 @@ section {
   background-color: #155a85; /* Color más oscuro al pasar el mouse */
 }
 
+
+#inv-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-basis:auto;
+  /* align-items:center; */
+
+}
+#inv-display li a img {
+  height: 125px ;
+  max-width: 100%;
+  border-radius: 2%;
+}
+#inv-display li {
+  height: 100%;
+  margin: 1rem;
+  border: 1px solid black;
+  list-style: none;
+  border-radius: 2%;
+  text-align: center;
+}
+.namePrice h2 a{
+  color: black;
+  font-size: medium;
+  font-display: fallback;
+}
+hr {
+  border: 1px solid black;
+}
+
 /* desktop Style */
 @media screen and (min-width: 800px) {
   
