@@ -6,7 +6,7 @@ const Util = {}
  ************************** */
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
-//console.log(data.rows) //
+  // console.log(data.rows) //
   let list = "<ul>"
   list += '<li><a href="/" title="Home page">Home</a></li>'
   data.rows.forEach((row) => {
@@ -34,7 +34,7 @@ Util.buildClassificationGrid = async function(data){
       grid = '<ul id="inv-display">'
       data.forEach(vehicle => { 
         grid += '<li>'
-        grid +=  '<a href="../../inv/detail/' + vehicle.inv_id  
+        grid +=  '<a href="../../inv/detail/' + vehicle.inv_id 
         + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
         + 'details"><img src="' + vehicle.inv_thumbnail 
         +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model + ' " ></a>'
@@ -56,6 +56,7 @@ Util.buildClassificationGrid = async function(data){
     }
     return grid
   }
+  
 /* **************************************
 * Build the details view HTML
 * ************************************ */
@@ -93,9 +94,8 @@ Util.buildDetailsId = async function(data){
       error500 += '</div>'
     return error500
   }
-  
 
-/* ****************************************
+  /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
  * General Error Handling

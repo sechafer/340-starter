@@ -1,10 +1,10 @@
 const { Pool } = require("pg")
 require("dotenv").config()
 /* ***************
- * Connection Pool
- * SSL Object needed for local testing of app
- * But will cause problems in production environment
- * If - else will make determination which to use
+ * Pool de Conexiones
+ * Objeto SSL necesario para pruebas locales de la aplicación
+ * Pero causará problemas en el entorno de producción
+ * If - else determinará cuál usar
  * *************** */
 let pool
 if (process.env.NODE_ENV == "development") {

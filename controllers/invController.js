@@ -18,33 +18,35 @@ invCont.buildByClassificationId = async function (req, res, next) {
     grid,
   })
 }
+
 /* ***************************
  *  Build details of car view
  * ************************** */
 invCont.buildDetailsId = async function (req, res, next) {
-    const classification_id = req.params.classificationId
-    const data = await invModel.getDetailsOfCar(classification_id)
-    const grid = await utilities.buildDetailsId(data)
-    let nav = await utilities.getNav()
-    const className = data.inv_year + ' ' + data.inv_make + ' ' + data.inv_model
-    res.render("./inventory/classification", {
-      title: className,
-      nav,
-      grid,
-    })
-  }
-  
-  /* ***************************
-   *  Build error view
-   * ************************** */
-  invCont.buildError = async function (req, res, next) {
-    const data = await invModel.error500() // This variable is where the error 500 will occur
-    const message = await utilities.buildErrorMessage(data)
-    let nav = await utilities.getNav()
-    res.render("./errors/error", {
-      title: data,
-      nav,
-      message,
-    })
-  }
+  const classification_id = req.params.classificationId
+  const data = await invModel.getDetailsOfCar(classification_id)
+  const grid = await utilities.buildDetailsId(data)
+  let nav = await utilities.getNav()
+  const className = data.inv_year + ' ' + data.inv_make + ' ' + data.inv_model
+  res.render("./inventory/classification", {
+    title: className,
+    nav,
+    grid,
+  })
+}
+
+/* ***************************
+ *  Build error view
+ * ************************** */
+invCont.buildError = async function (req, res, next) {
+  const data = await invModel.error500() // This variable is where the error 500 will occur
+  const message = await utilities.buildErrorMessage(data)
+  let nav = await utilities.getNav()
+  res.render("./errors/error", {
+    title: data,
+    nav,
+    message,
+  })
+}
+
 module.exports = invCont
