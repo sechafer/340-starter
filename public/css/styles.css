@@ -258,7 +258,7 @@ section {
 .namePrice h2 a{
   color: black;
   font-size: medium;
-  font-display: fallback;
+  
 }
 hr {
   border: 1px solid black;
