@@ -1,0 +1,29 @@
+<!-- if statement, if title then display title, else redirect -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+
+    <!-- message -->
+    <%- messages() %>
+
+    <!-- Inventory items display -->
+    <%# login %>
+    <div class="login-form-container">
+        <form>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder="email@domain.com" required>
+
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+
+            <button type="submit">LOGIN</button>
+                <div id="no-account">
+                    <p>No account? <a id="sign-up" href="/account/register" title="Sign-up">Sign-up</a></p>
+                </div>
+
+        </form>
+    </div>
