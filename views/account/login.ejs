@@ -7,23 +7,33 @@
 
     <!-- message -->
     <%- messages() %>
+    
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <% if (error.msg != "Invalid value") { %>
+            <li><%= error.msg %></li>
+        <% } %>
+    <%  }) %>
+    </ul>
+    <% } %>
 
     <!-- Inventory items display -->
-    <%# login %>
-    <div class="login-form-container">
-        <form>
+<%# login %>
+<div class="login-form-container">
+    <form id="loginForm" action="/account/login" method="post">
 
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" placeholder="email@domain.com" required>
+            <label for="email">Email:</label>
+            <input type="email" name="account_email" id="account_email" placeholder="email@domain.com" required value="<%= locals.account_email %>">
 
 
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" placeholder="Password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
 
-            <button type="submit">LOGIN</button>
-                <div id="no-account">
-                    <p>No account? <a id="sign-up" href="/account/register" title="Sign-up">Sign-up</a></p>
-                </div>
+        <button type="submit">LOGIN</button>
+            <div id="no-account">
+                <p>No account? <a id="sign-up" href="/account/register" title="Sign-up">Sign-up</a></p>
+            </div>
 
-        </form>
-    </div>
+    </form>
+</div>

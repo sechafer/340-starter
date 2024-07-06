@@ -289,9 +289,8 @@ hr {
 }
 
 /*  Estilo para el login*/
-.login-form-container {
-  /* display: grid; */
-  /* grid-template-columns: repeat(3, 1fr); */
+.login-form-container, #add-classification, #add-inventory {
+ 
   color: white;
   display: flex;
   justify-content: center;
@@ -314,7 +313,7 @@ label, input, button, span{
   border-radius: 2%;
   border: none;
 }
-input {
+input,textarea {
   width: 100%;
   border-radius: 5px;
 }
@@ -330,10 +329,11 @@ button:hover, #pswdBtn:hover {
   /* color: #00698B; */
   color: #ffffff;
 }
-label {
+label,#classificasion_id {
   padding-left: 0;
   padding-bottom: 0;
   font-weight: bold;
+  margin: 0;
 }
 button, #no-account {
   margin-top: 4%;
@@ -354,12 +354,12 @@ button, #no-account {
   font-size: small;
 }
 .notice {
-  color: red
+  color: #E66913
 }
-input:required:invalid, input:focus:invalid {
+input:required:invalid, input:focus:invalid, textarea:focus:invalid, textarea:required:invalid  {
 border: 2px solid #e62b12;
 }
-input:required:valid {
+input:required:valid, textarea:required:valid  {
 border: 2px solid #00bfff;
 }
 
