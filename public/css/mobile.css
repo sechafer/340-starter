@@ -1,0 +1,47 @@
+html {
+    background:#fff;
+  }
+  body {
+    background-color:white;
+    border-radius: 0;
+    width: 100%;
+    margin: auto;
+    border-style: none;
+    padding: .5em;
+    /* font-family:  'Rock Salt', cursive; */
+  }
+  #hero img {
+    width: 80%;
+  }
+  #specs {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.565);
+    color: rgb(29, 190, 190);
+    font-size:medium;
+    top: 0%;
+    left: 0%;
+    margin: auto;
+    width: 30%;
+  }
+  h3, h2 {
+    font-size: 90%;
+  }
+  h2 {
+    font-weight: bolder;
+    font-size: 1rem;
+  }
+  #upgrade-review {
+    display: block;
+    order: 1;
+  }
+  #reviews-list {
+    gap: 7% 0%;
+    margin-top: 0;
+    margin-bottom: 12%;
+    padding: 0 5% ;
+  }
+  .sub-topic {
+    /* margin-top: 1.5rem 0; */
+    margin-top: 0;
+    /* padding-top: 1rem; */
+  }

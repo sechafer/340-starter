@@ -1,0 +1,15 @@
+<!-- if statement, if title then display title, else redirect -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+    
+    <!-- message -->
+    <%- messages() %>
+    
+    <!-- Options display -->
+    <div id="management">
+        <a href="/inv/add_classification" title="Add new classification" title="add new classification">Add New Classification</a><br>
+        <a href="/inv/add-vehicle" title="Add new vehicle" title="Add new vehicle">Add New Vehicle</a>
+    </div>
