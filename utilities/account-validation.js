@@ -1,7 +1,12 @@
 const utilities = require(".")
 const { body, validationResult } = require("express-validator")
+<<<<<<< HEAD
+const accountModel = require("../models/account-model")
+const validate = {}
+=======
 const validate = {}
 const accountModel = require("../models/account-model")
+>>>>>>> main
 
 /*  **********************************
   *  Registration Data Validation Rules
@@ -15,7 +20,11 @@ validate.registationRules = () => {
         .notEmpty()
         .isLength({ min: 1 })
         .withMessage("Please provide a first name."), // on error this message is sent.
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> main
       // lastname is required and must be string
       body("account_lastname")
         .trim()
@@ -23,7 +32,11 @@ validate.registationRules = () => {
         .notEmpty()
         .isLength({ min: 2 })
         .withMessage("Please provide a last name."), // on error this message is sent.
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> main
       // valid email is required and cannot already exist in the DB
       body("account_email")
       .trim()
@@ -38,7 +51,11 @@ validate.registationRules = () => {
           throw new Error("Email exists. Please log in or use different email")
         }
       }),
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> main
       // password is required and must be strong password
       body("account_password")
         .trim()
@@ -76,7 +93,10 @@ validate.checkRegData = async (req, res, next) => {
     next()
   }
 
+<<<<<<< HEAD
+=======
   
+>>>>>>> main
   /*  **********************************
   *  Login Data Validation Rules
   * ********************************* */
@@ -131,5 +151,10 @@ validate.checkLoginData = async (req, res, next) => {
     }
     next()
 }
+<<<<<<< HEAD
+  
+module.exports = validate
+=======
 
   module.exports = validate
+>>>>>>> main
