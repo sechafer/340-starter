@@ -13,7 +13,16 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const router = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
+<<<<<<< HEAD
 const utilities = require("./utilities/") 
+=======
+<<<<<<< HEAD
+const utilities = require("./utilities/") 
+=======
+const utilities = require("./utilities/")  
+
+>>>>>>> main
+>>>>>>> 7fae5ecec95e880afce0b6e519aeafc25e5b4b14
 const session = require("express-session")
 const pool = require('./database/')
 const account=require('./routes/accountRoute')
@@ -42,6 +51,13 @@ app.use(function(req, res, next){
   next()
 })
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
+>>>>>>> 7fae5ecec95e880afce0b6e519aeafc25e5b4b14
 /* ***********************
  * View Engine and Templates
  *************************/

@@ -13,7 +13,15 @@ async function buildLogin(req, res, next) {
         errors: null
     })
     }
+<<<<<<< HEAD
   
+=======
+<<<<<<< HEAD
+  
+=======
+
+>>>>>>> main
+>>>>>>> 7fae5ecec95e880afce0b6e519aeafc25e5b4b14
 /* ****************************************
 *  Deliver registration view
 * *************************************** */
@@ -30,7 +38,15 @@ async function buildRegister(req, res, next) {
 *  Process Registration
 * *************************************** */
 async function registerAccount(req, res) {
+<<<<<<< HEAD
 	let nav = await utilities.getNav()
+=======
+<<<<<<< HEAD
+	let nav = await utilities.getNav()
+=======
+    let nav = await utilities.getNav()
+>>>>>>> main
+>>>>>>> 7fae5ecec95e880afce0b6e519aeafc25e5b4b14
 	const { account_firstname, account_lastname, account_email, account_password } = req.body
 
 	// Hash the password before storing
@@ -73,5 +89,13 @@ async function registerAccount(req, res) {
 		})
 	}
 }
+<<<<<<< HEAD
   
+=======
+<<<<<<< HEAD
+  
+=======
+
+>>>>>>> main
+>>>>>>> 7fae5ecec95e880afce0b6e519aeafc25e5b4b14
 module.exports = { buildLogin, buildRegister, registerAccount }

@@ -15,6 +15,10 @@ async function registerAccount(account_firstname, account_lastname, account_emai
   /* **********************
  *   Check for existing email
  * ********************* */
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7fae5ecec95e880afce0b6e519aeafc25e5b4b14
 async function checkExistingEmail(account_email){
   try {
     const sql = "SELECT * FROM account WHERE account_email = $1"
@@ -22,7 +26,27 @@ async function checkExistingEmail(account_email){
     return email.rowCount
   } catch (error) {
     return error.message
+<<<<<<< HEAD
   }
 }
 
   module.exports = {registerAccount, checkExistingEmail};
+=======
+  }
+}
+
+  module.exports = {registerAccount, checkExistingEmail};
+=======
+  async function checkExistingEmail(account_email){
+    try {
+      const sql = "SELECT * FROM account WHERE account_email = $1"
+      const email = await pool.query(sql, [account_email])
+      return email.rowCount
+    } catch (error) {
+      return error.message
+    }
+  }
+  
+    module.exports = {registerAccount, checkExistingEmail};
+>>>>>>> main
+>>>>>>> 7fae5ecec95e880afce0b6e519aeafc25e5b4b14

@@ -81,8 +81,52 @@ Util.buildDetailsId = async function(data){
   } else { 
     grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
+<<<<<<< HEAD
   return grid
 }
+
+/* **************************************
+* Build error view HTML
+* ************************************ */
+Util.buildErrorMessage = async function(){
+  let error500
+    error500 = '<div id="details-display-error">'
+    error500 += '<p>Oh no! There was a crash. Maybe try a different route?</p>'
+    error500 += '</div>'
+  return error500
+}
+
+=======
+<<<<<<< HEAD
+  return grid
+}
+=======
+>>>>>>> 7fae5ecec95e880afce0b6e519aeafc25e5b4b14
+/* ************************
+ * Build the classification list
+ ************************** */
+Util.buildClassificationList = async function (classification_id = null) {
+  let data = await invModel.getClassifications()
+  let classificationList =
+    '<select name="classification_id" id="classificationList" required>'
+  classificationList += "<option value=''>Choose a Classification</option>"
+  data.rows.forEach((row) => {
+    classificationList += '<option value="' + row.classification_id + '"'
+    if (
+      classification_id != null &&
+      row.classification_id == classification_id
+    ) {
+      classificationList += " selected "
+    }
+    classificationList += ">" + row.classification_name + "</option>"
+  })
+  classificationList += "</select>"
+  return classificationList
+}
+
+<<<<<<< HEAD
+=======
+>>>>>>> main
 
 /* **************************************
 * Build error view HTML
@@ -117,6 +161,7 @@ Util.buildClassificationList = async function (classification_id = null) {
   return classificationList
 }
 
+>>>>>>> 7fae5ecec95e880afce0b6e519aeafc25e5b4b14
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
