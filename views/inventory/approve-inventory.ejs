@@ -1,0 +1,54 @@
+<!-- if statement, if title then display title, else redirect -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+    
+    <!-- message -->
+    <%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <% if (error.msg != "Invalid value") { %>
+            <li><%= error.msg %></li>
+        <% } %>
+    <%  }) %>
+    </ul>
+    <% } %>
+    
+<!-- Approve Inventory display -->
+<div id="approved-inventory">
+    <form  action="/inv/approve-inv" method="post">
+        <p>Verify the information of vehicle before approve it</p>
+
+        <label for="inv_make">Make</label>
+        <input type="text" name="inv_make" id="inv_make" required value="<%= locals.inv_make %>" readonly>
+        
+        <label for="inv_model">Model</label>
+        <input type="text" name="inv_model" id="inv_model" required value="<%= locals.inv_model %>" readonly>
+        
+        <label for="inv_price">Price</label>
+        <input type="text" name="inv_price" id="inv_price" required value="<%= locals.inv_price %>" readonly>
+        
+        <label for="inv_year">Year</label>
+        <input type="text" name="inv_year" id="inv_year" required value="<%= locals.inv_year %>" readonly>
+        
+        <label for="inv_miles">Miles</label>
+        <input type="text" name="inv_miles" id="inv_miles" required value="<%= locals.inv_miles %>" readonly>
+        
+        <label for="inv_color">Color</label>
+        <input type="text" name="inv_color" id="inv_color" required value="<%= locals.inv_color %>" readonly>
+
+        <button type="submit">Approve Vehicle</button>
+        
+        <input type="hidden" name="inv_id"
+        <% if(locals.inv_id) {%> value="<%= locals.inv_id %>"
+        <% } %>>
+        <input type="hidden" name="classification_id"
+        <% if(locals.classification_id) {%> value="<%= locals.classification_id %>"
+        <% } %>>
+        
+    </form>
+</div>

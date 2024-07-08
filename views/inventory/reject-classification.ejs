@@ -1,0 +1,36 @@
+<!-- if statement, if title then display title, else redirect -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+    
+    <!-- message -->
+    <%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <% if (error.msg != "Invalid value") { %>
+            <li><%= error.msg %></li>
+        <% } %>
+    <%  }) %>
+    </ul>
+    <% } %>
+    
+<!-- Reject display -->
+<div id="reject-classification">
+    <form  action="/inv/reject" method="post">
+        <p>Verify information before reject this classification</p>
+
+        <label for="classification_name">Classification Name</label>
+        <input type="text" name="classification_name" id="classification_name" required value="<%= locals.classification_name %>" readonly>
+         
+        <button type="submit">Reject Classification</button>
+        
+        <input type="hidden" name="classification_id"
+        <% if(locals.classification_id) {%> value="<%= locals.classification_id %>"
+        <% } %>>
+        
+    </form>
+</div>

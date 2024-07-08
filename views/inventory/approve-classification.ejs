@@ -1,0 +1,36 @@
+<!-- if statement, if title then display title, else redirect -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+    
+    <!-- message -->
+    <%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <% if (error.msg != "Invalid value") { %>
+            <li><%= error.msg %></li>
+        <% } %>
+    <%  }) %>
+    </ul>
+    <% } %>
+    
+<!-- Approve display -->
+<div id="approved-classification">
+    <form  action="/inv/approve" method="post">
+        <p>Verify information before approved this classification</p>
+
+        <label for="classification_name">Classification Name</label>
+        <input type="text" name="classification_name" id="classification_name" required value="<%= locals.classification_name %>" readonly>
+         
+        <button type="submit">Approve Classification</button>
+        
+        <input type="hidden" name="classification_id"
+        <% if(locals.classification_id) {%> value="<%= locals.classification_id %>"
+        <% } %>>
+        
+    </form>
+</div>
