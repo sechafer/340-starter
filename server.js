@@ -13,8 +13,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const router = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
-const utilities = require("./utilities/")  
-
+const utilities = require("./utilities/") 
 const session = require("express-session")
 const pool = require('./database/')
 const account=require('./routes/accountRoute')
@@ -43,7 +42,6 @@ app.use(function(req, res, next){
   next()
 })
 
-
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -51,15 +49,14 @@ app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
 
-
 /* ***********************
  * Routes
  *************************/
 app.use(static)
-//Index Route
-//app.get("/",function(req, res){res.render("index", {title:"Home"})})
+// Index route
+// app.get("/",function(req,res){res.render("index", {title: "Home"})})
 app.get("/", utilities.handleErrors(baseController.buildHome))
-// Inventory routes (descripcion)
+// Inventory routes (description)
 app.use("/inv", inventoryRoute)
 app.use("/account", account)
 
@@ -82,6 +79,7 @@ app.use(async (err, req, res, next) => {
     nav
   })
 })
+
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file

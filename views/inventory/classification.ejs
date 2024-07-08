@@ -1,13 +1,13 @@
 <!-- if statement, if title then display title, else redirect -->
 <% if (title) { %>
-    <h1><%= title %></h1>
-    <% } else {
-        res.redirect('/')
-    } %>
-    
-    <!-- message, TODO -->
-    <%# messages() %>
-    
-    <!-- Inventory items display -->
-    <%- grid %>
-    
+<h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- message, TODO -->
+<%# messages() %>
+
+<!-- Inventory items display -->
+<%- grid %>
+
