@@ -5,6 +5,12 @@ const invController = require("../controllers/invController")
 const utilities = require("../utilities/")
 const classValidate = require('../utilities/classification-validation')
 const vehicleValidate = require('../utilities/vehicle-validation')
+<<<<<<< HEAD
+=======
+
+// // Route to building management view
+router.get("/", utilities.handleErrors(invController.buildManagement));
+>>>>>>> main
 
 // // Route to building management view
 router.get("/", utilities.handleErrors(invController.buildManagement));
@@ -20,10 +26,22 @@ router.get("/add_classification", utilities.handleErrors(invController.addClassi
 // Route to build add-classification rules
 router.post("/add_classification", classValidate.classificationRules(), classValidate.checkClassData , utilities.handleErrors(invController.addNewClassification));
 
+<<<<<<< HEAD
+=======
+// Route to build add-classification
+router.get("/add_classification", utilities.handleErrors(invController.addClassification));
+// Route to build add-classification rules
+router.post("/add_classification", classValidate.classificationRules(), classValidate.checkClassData , utilities.handleErrors(invController.addNewClassification));
+
+>>>>>>> main
 // Route to build add-vehicle
 router.get("/add-vehicle", utilities.handleErrors(invController.addInventory));
 
 // Route to build add-vehicle
 router.post("/add-vehicle", vehicleValidate.vehicleRules(), vehicleValidate.checkVehicleData, utilities.handleErrors(invController.addNewVehicle));
 
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> main

@@ -13,7 +13,11 @@ async function buildLogin(req, res, next) {
         errors: null
     })
     }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> main
 /* ****************************************
 *  Deliver registration view
 * *************************************** */
@@ -30,7 +34,11 @@ async function buildRegister(req, res, next) {
 *  Process Registration
 * *************************************** */
 async function registerAccount(req, res) {
+<<<<<<< HEAD
 	let nav = await utilities.getNav()
+=======
+    let nav = await utilities.getNav()
+>>>>>>> main
 	const { account_firstname, account_lastname, account_email, account_password } = req.body
 
 	// Hash the password before storing
@@ -73,5 +81,9 @@ async function registerAccount(req, res) {
 		})
 	}
 }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> main
 module.exports = { buildLogin, buildRegister, registerAccount }

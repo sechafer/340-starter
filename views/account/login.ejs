@@ -4,10 +4,17 @@
     <% } else {
         res.redirect('/')
     } %>
+<<<<<<< HEAD
     
     <!-- message -->
     <%- messages() %>
 
+=======
+
+    <!-- message -->
+    <%- messages() %>
+    
+>>>>>>> main
 <% if (errors) { %>
     <ul class="notice">
     <% errors.array().forEach(error => { %>
@@ -17,6 +24,7 @@
     <%  }) %>
     </ul>
     <% } %>
+<<<<<<< HEAD
     
 <!-- Inventory items display -->
 <%# login %>
@@ -30,10 +38,29 @@
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" placeholder="Password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
         
+=======
+
+    <!-- Inventory items display -->
+<%# login %>
+<div class="login-form-container">
+    <form id="loginForm" action="/account/login" method="post">
+
+            <label for="email">Email:</label>
+            <input type="email" name="account_email" id="account_email" placeholder="email@domain.com" required value="<%= locals.account_email %>">
+
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+
+>>>>>>> main
         <button type="submit">LOGIN</button>
             <div id="no-account">
                 <p>No account? <a id="sign-up" href="/account/register" title="Sign-up">Sign-up</a></p>
             </div>
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> main
     </form>
 </div>

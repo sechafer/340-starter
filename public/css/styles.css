@@ -147,7 +147,12 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+<<<<<<< HEAD
   flex-basis: auto;
+=======
+  flex-basis:auto;
+
+>>>>>>> main
 }
 #inv-display li a img {
   height: 125px;
@@ -194,7 +199,14 @@ hr {
   background-color: rgba(127, 255, 212, 0.082);
   padding: .8%;
 }
+<<<<<<< HEAD
 .login-form-container, #add-classification, #add-inventory {
+=======
+
+/*  Estilo para el login*/
+.login-form-container, #add-classification, #add-inventory {
+ 
+>>>>>>> main
   color: white;
   display: flex;
   justify-content: center;
@@ -204,7 +216,11 @@ form {
   padding: 2%;
   background-color: #00698B;
   display: flex;
+<<<<<<< HEAD
   align-items: flex-start;
+=======
+  align-items:flex-start;
+>>>>>>> main
   justify-items: flex-start;
   flex-direction: column;
   border-radius: 3%;
@@ -212,12 +228,20 @@ form {
   border: 2px solid grey;
   width: 50%;
 }
+<<<<<<< HEAD
 label, input, button, span {
+=======
+label, input, button, span{
+>>>>>>> main
   padding: 3%;
   border-radius: 2%;
   border: none;
 }
+<<<<<<< HEAD
 input, textarea {
+=======
+input,textarea {
+>>>>>>> main
   width: 100%;
   border-radius: 5px;
 }
@@ -228,11 +252,20 @@ button {
   border-radius: 15px;
 }
 button:hover, #pswdBtn:hover {
+<<<<<<< HEAD
   cursor: pointer;
   background-color: rgb(153, 171, 182);
   color: #ffffff;
 }
 label, #classificasion_id {
+=======
+  cursor:pointer;
+  background-color: rgb(153, 171, 182);
+  /* color: #00698B; */
+  color: #ffffff;
+}
+label,#classificasion_id {
+>>>>>>> main
   padding-left: 0;
   padding-bottom: 0;
   font-weight: bold;
@@ -257,6 +290,7 @@ button, #no-account {
   font-size: small;
 }
 .notice {
+<<<<<<< HEAD
   color: #E66912;
 }
 input:required:invalid, input:focus:invalid, textarea:focus:invalid, textarea:required:invalid {
@@ -270,6 +304,20 @@ input:required:valid, textarea:required:valid {
   html {
     background: #fff;
   }
+=======
+  color: #E66913
+}
+input:required:invalid, input:focus:invalid, textarea:focus:invalid, textarea:required:invalid  {
+border: 2px solid #e62b12;
+}
+input:required:valid, textarea:required:valid  {
+border: 2px solid #00bfff;
+}
+
+/* desktop Style */
+@media screen and (min-width: 800px) {
+  
+>>>>>>> main
   body {
     background-color: white;
     border-radius: 0;
@@ -316,7 +364,12 @@ input:required:valid, textarea:required:valid {
     flex-direction: column;
   }
   .description {
+<<<<<<< HEAD
     padding: 0;
+=======
+    padding: 0 ;
+
+>>>>>>> main
   }
   .login-form-container {
     grid-template-columns: repeat(1, 1fr);

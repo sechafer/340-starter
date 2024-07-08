@@ -4,7 +4,11 @@
     <% } else {
         res.redirect('/')
     } %>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> main
     <!-- message -->
     <%- messages() %>
 
@@ -17,7 +21,11 @@
     <%  }) %>
     </ul>
     <% } %>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> main
 <!-- Inventory items display -->
 <div id="add-classification">
     <form action="/inv/add_classification" method="post">
@@ -26,8 +34,14 @@
             <p>Name must be alphabetic chraters only</p>
             <!-- <label for="classification_name">New Classification</label> -->
             <input type="text" name="classification_name" id="classification_name" pattern="^[A-Z][a-z]{1,15}$" placeholder="Sedan" required value="<%= locals.classification_name %>">
+<<<<<<< HEAD
         
         <button type="submit">Add Classification</button>
         
+=======
+
+        <button type="submit">Add Classification</button>
+
+>>>>>>> main
     </form>
 </div>
