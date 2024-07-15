@@ -3,7 +3,9 @@ const { body, validationResult } = require("express-validator")
 const invModel = require("../models/inventory-model")
 const validate = {}
 
-
+/*  **********************************
+  *  Classification Validation Rules
+  * ********************************* */
 validate.classificationRules = () => {
     return [
 body("classification_name")
@@ -21,6 +23,9 @@ body("classification_name")
     ]
 }
 
+/* ******************************
+ * Check data and return errors or continue to classification
+ * ***************************** */
 validate.checkClassData = async (req, res, next) => {
     const { classification_name } = req.body
     let errors = []

@@ -26,4 +26,13 @@ router.get("/add-vehicle", utilities.handleErrors(invController.addInventory));
 // Route to build add-vehicle
 router.post("/add-vehicle", vehicleValidate.vehicleRules(), vehicleValidate.checkVehicleData, utilities.handleErrors(invController.addNewVehicle));
 
+// Route to JSON (injet table to innerHTML)
+router.get("/getInventory/:classification_id", utilities.checkLogin, utilities.handleErrors(invController.getInventoryJSON))
+
+// Route to edit items information
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editingItemsInformation))
+
+//Route post update inventory
+router.post("/update/", vehicleValidate.vehicleRules(), vehicleValidate.chechUpdateData , utilities.handleErrors(invController.updateInventory))
+
 module.exports = router;
