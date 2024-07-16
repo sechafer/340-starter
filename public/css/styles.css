@@ -194,7 +194,9 @@ hr {
   background-color: rgba(127, 255, 212, 0.082);
   padding: .8%;
 }
-.login-form-container, #add-classification, #add-inventory, #delete-inventory {
+.login-form-container, #add-classification, #add-inventory, #modify-inventory, 
+#delete-inventory, #approved-classification, #reject-classification, 
+#approved-inventory, #reject-inventory {
   color: white;
   display: flex;
   justify-content: center;
@@ -286,7 +288,9 @@ button:hover:disabled {
   color: #fff;
   padding: 3% 12%;
 }
-
+th {
+  text-align: left;
+}
 @media screen and (max-width: 480px) {
   html {
     background: #fff;
