@@ -64,8 +64,8 @@ validate.checkVehicleData = async (req, res, next) => {
     const classificationList = await utilities.buildClassificationList(classification_id)
     errors = validationResult(req)
     if (!errors.isEmpty()) {
-      let nav = await utilities.getNav()
-      res.render("inventory/add-inventory", {
+        let nav = await utilities.getNav()
+        res.render("inventory/add-inventory", {
         errors,
         title: "Add New Vehicle",
         nav,
@@ -79,13 +79,13 @@ validate.checkVehicleData = async (req, res, next) => {
         inv_year, 
         inv_miles, 
         inv_color,
-      })
-      return
+        })
+        return
     }
     next()
-  }
+}
 
-  /* ******************************
+/* ******************************
  * Check data and return errors or continue to edit view
  * ***************************** */
 validate.chechUpdateData = async (req, res, next) => {
@@ -114,7 +114,6 @@ validate.chechUpdateData = async (req, res, next) => {
         return
     }
     next()
-  }
-
+}
 
 module.exports = validate;

@@ -121,7 +121,8 @@ validate.checkLoginData = async (req, res, next) => {
     }
     next()
 }
-  /*  **********************************
+
+/*  **********************************
 *  Change user information Data Validation Rules
 * ********************************* */
 validate.changeInformationRules = () => {
@@ -173,7 +174,7 @@ validate.checkUpdateData = async (req, res, next) => {
     }
     next()
   }
-
+	
 /*  **********************************
 *  Change user password - Data Validation Rules
 * ********************************* */
@@ -212,5 +213,5 @@ validate.checkPassowordData = async (req, res, next) => {
     }
     next()
   }
-
+			
 module.exports = validate

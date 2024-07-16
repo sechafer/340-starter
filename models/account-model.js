@@ -38,6 +38,7 @@ async function getAccountByEmail (account_email) {
     return new Error("No matching email found")
   }
 }
+
 /* *****************************
 * Return account data using account_id
 * ***************************** */
@@ -77,4 +78,3 @@ async function updateAccontPwd(account_id, account_password) {
 }
 
   module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccontInformation, updateAccontPwd };
- 
