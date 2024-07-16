@@ -58,6 +58,7 @@ validate.vehicleRules = () => {
  * Check data and return errors or continue to add-vehicle
  * ***************************** */
 validate.checkVehicleData = async (req, res, next) => {
+    let nav = await utilities.getNav()
     const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color } = req.body
     let errors = []
     const classificationList = await utilities.buildClassificationList(classification_id)

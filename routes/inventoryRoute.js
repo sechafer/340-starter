@@ -35,4 +35,10 @@ router.get("/edit/:inv_id", utilities.handleErrors(invController.editingItemsInf
 //Route post update inventory
 router.post("/update/", vehicleValidate.vehicleRules(), vehicleValidate.chechUpdateData , utilities.handleErrors(invController.updateInventory))
 
+// Route to delete (vehicle) information
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteItemsInformation))
+
+//Route post delete inventory
+router.post("/delete/", utilities.handleErrors(invController.deleteInventory))
+
 module.exports = router;

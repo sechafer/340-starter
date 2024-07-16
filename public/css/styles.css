@@ -194,7 +194,7 @@ hr {
   background-color: rgba(127, 255, 212, 0.082);
   padding: .8%;
 }
-.login-form-container, #add-classification, #add-inventory {
+.login-form-container, #add-classification, #add-inventory, #delete-inventory {
   color: white;
   display: flex;
   justify-content: center;
