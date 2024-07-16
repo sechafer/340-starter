@@ -26,6 +26,6 @@ router.post("/update/", utilities.checkLogin, regValidate.changeInformationRules
 router.post("/changepassword/", utilities.checkLogin, regValidate.changePasswordRules(), regValidate.checkPassowordData , utilities.handleErrors(accountController.updateAccountPassword));
 
 // Route to update account password 
-router.post("/changepassword/", utilities.checkLogin, regValidate.changePasswordRules(), regValidate.checkPassowordData , utilities.handleErrors(accountController.updateAccountPassword));
+router.get("/logout", utilities.checkLogin, utilities.handleErrors(accountController.logout));
 
 module.exports = router;

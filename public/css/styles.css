@@ -276,10 +276,17 @@ button:disabled {
 button:hover:disabled {
   background-color: #00bfffc8;
 }
-/* button:active {
-  color: #00698B;
+#accountUpdate, #changePassword {
+  display: inline-block;
   background-color: white;
-} */
+  border: none;
+}
+#accountUpdate button, #changePassword button, #pswdBtn {
+  background-color: #00698B;
+  color: #fff;
+  padding: 3% 12%;
+}
+
 @media screen and (max-width: 480px) {
   html {
     background: #fff;

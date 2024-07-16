@@ -3,12 +3,13 @@ const accountModel = require("../models/account-model")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
+
 /* ****************************************
 *  Deliver login view
 * *************************************** */
 async function buildLogin(req, res, next) {
-	const login =  utilities.Login(res.locals.accountData)
     let nav = await utilities.getNav()
+	const login =  utilities.Login(res.locals.accountData)
     res.render("account/login", {
         title: "Login",
         nav,
@@ -35,8 +36,8 @@ async function buildRegister(req, res, next) {
 *  Process Registration
 * *************************************** */
 async function registerAccount(req, res) {
-	const login =  utilities.Login(res.locals.accountData)
 	let nav = await utilities.getNav()
+	const login =  utilities.Login(res.locals.accountData)
 	const { account_firstname, account_lastname, account_email, account_password } = req.body
 
 	// Hash the password before storing
@@ -80,7 +81,7 @@ async function registerAccount(req, res) {
 		})
 	}
 }
-  
+
 /* ****************************************
  *  Process login request
  * ************************************ */
@@ -97,26 +98,27 @@ async function accountLogin(req, res) {
 		login,
 		errors: null,
 		account_email,
-	 })
+	})
 	return
 	}
 	try {
 	 if (await bcrypt.compare(account_password, accountData.account_password)) {
-	 delete accountData.account_password
-	 const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 })
-	 if(process.env.NODE_ENV === 'development') {
-	   res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
-	   } else {
-		 res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
-	   }
-	 return res.redirect("/account/")
-	 }
-	} catch (error) {
-	 return new Error('Access Forbidden')
+		delete accountData.account_password
+		const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 })
+		if(process.env.NODE_ENV === 'development') {
+			res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+		} else {
+			res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
+		}
+	 	return res.redirect("/account/")
 	}
-   }
+	} catch (error) {
+		return new Error('Access Forbidden')
+	}
+}
+  
 
-   async function accountManagment(req, res, next) {
+async function accountManagment(req, res, next) {
 	let nav = await utilities.getNav()
 	const login =  utilities.Login(res.locals.accountData)
 	const invManagement = utilities.inventoryManagement(res.locals.accountData)
@@ -141,90 +143,7 @@ async function accountInfomation(req, res) {
 	const getAccountById = await accountModel.getAccountById(res.locals.accountData.account_id)
 	const login =  utilities.Login(getAccountById)
 	const { account_id, account_firstname, account_lastname, account_email} = getAccountById
-
-	if (getAccountById) {
-		res.render("account/update-account", {
-			title: "Edit Account",
-			nav,
-			errors: null,
-			login,
-			account_id, 
-			account_firstname, 
-			account_lastname, 
-			account_email,
-		})
-	} 
-}
-
-/* ****************************************
-*  Update account information
-* *************************************** */
-async function updateAccountInfomation(req, res) {
-	let nav = await utilities.getNav()
-	const { account_id, account_firstname, account_lastname, account_email} = req.body
-	const updateResult = await accountModel.updateAccontInformation(
-		account_id, account_firstname, account_lastname, account_email)
-	const login =  utilities.Login(req.body)
-
-	if (updateResult) {
-		req.flash(
-		"notice",
-		`Congratulations, your information has been updated.`
-		)
-		res.status(201).redirect("/account/")
-	} else {
-		res.status(501).render("./account/update-account", {
-			title: "Edit Account",
-			nav,
-			errors: null,
-			login,
-			account_id, 
-			account_firstname, 
-			account_lastname, 
-			account_email,
-		})
-	}
-}
-
-/* ****************************************
-*  Update account password
-* *************************************** */
-async function updateAccountPassword(req, res) {
-	let nav = await utilities.getNav()
-	const getAccountById = await accountModel.getAccountById(res.locals.accountData.account_id)
-	const { account_id, account_password,} = getAccountById
-
-	let hashedPassword = await bcrypt.hashSync(account_password, 10)
-	const updateResult = await accountModel.updateAccontPwd(account_id, hashedPassword)
-
-	if (updateResult) {
-		req.flash(
-		"notice",
-		`Congratulations, your password has been updated.`
-		)
-		res.status(201).redirect("/account/")
-	} else {
-		res.status(501).render("./account/update-account", {
-			title: "Edit Account",
-			nav,
-			errors: null,
-			login,
-			account_id, 
-			account_firstname, 
-			account_lastname, 
-			account_email,
-		})
-	}
-}
-/* ****************************************
-*  Update-Account information view
-* *************************************** */
-async function accountInfomation(req, res) {
-	let nav = await utilities.getNav()
-	const getAccountById = await accountModel.getAccountById(res.locals.accountData.account_id)
-	const login =  utilities.Login(getAccountById)
-	const { account_id, account_firstname, account_lastname, account_email} = getAccountById
-
+	
 	if (getAccountById) {
 		res.render("account/update-account", {
 			title: "Edit Account",
@@ -300,5 +219,17 @@ async function updateAccountPassword(req, res) {
 	}
 }
 
+/* ****************************************
+*  Logout account
+* *************************************** */
+async function logout(req, res) {
+	let nav = await utilities.getNav()
+	let logOut = res.clearCookie('jwt')
+	if (logOut) {
+		// req.flash("notice",`User logout successfully`)
+		console.log(`User logout successfully`)
+		res.status(201).redirect("/")
+	} 
+}
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin,accountManagment, accountInfomation, updateAccountInfomation, updateAccountPassword }
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin,accountManagment, accountInfomation, updateAccountInfomation, updateAccountPassword, logout }

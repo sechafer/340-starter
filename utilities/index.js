@@ -37,7 +37,7 @@ Util.Login = function (accountData=null) {
       login += '<a href="\/account\/login" title="Click to login">My Account</a>'
   } else {
       login += `<a href="/account" title="Welcome">Welcome ${accountData.account_firstname} </a>`
-      login += '<a href="/#" title="Logout"> Logout</a>'
+      login += '<a href="/account/logout" title="Logout"> Logout</a>'
   }
   login += "</div>"
   return login
