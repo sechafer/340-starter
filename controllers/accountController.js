@@ -7,10 +7,12 @@ require("dotenv").config()
 *  Deliver login view
 * *************************************** */
 async function buildLogin(req, res, next) {
+	const login =  utilities.Login(res.locals.accountData)
     let nav = await utilities.getNav()
     res.render("account/login", {
         title: "Login",
         nav,
+		login,
         errors: null
     })
     }
@@ -20,9 +22,11 @@ async function buildLogin(req, res, next) {
 * *************************************** */
 async function buildRegister(req, res, next) {
     let nav = await utilities.getNav()
+	const login =  utilities.Login(res.locals.accountData)
     res.render("account/register", {
       title: "Register",
       nav,
+	  login,
       errors: null,
     })
 }
@@ -31,6 +35,7 @@ async function buildRegister(req, res, next) {
 *  Process Registration
 * *************************************** */
 async function registerAccount(req, res) {
+	const login =  utilities.Login(res.locals.accountData)
 	let nav = await utilities.getNav()
 	const { account_firstname, account_lastname, account_email, account_password } = req.body
 
@@ -44,6 +49,7 @@ async function registerAccount(req, res) {
 		res.status(500).render("account/register", {
 		title: "Registration",
 		nav,
+		login,
 		errors: null,
 		})
 	}
@@ -82,13 +88,15 @@ async function accountLogin(req, res) {
 	let nav = await utilities.getNav()
 	const { account_email, account_password } = req.body
 	const accountData = await accountModel.getAccountByEmail(account_email)
+	const login =  utilities.Login(accountData)
 	if (!accountData) {
-	 req.flash("notice", "Please check your credentials and try again.")
-	 res.status(400).render("account/login", {
-	  title: "Login",
-	  nav,
-	  errors: null,
-	  account_email,
+		req.flash("notice", "Please check your credentials and try again.")
+		res.status(400).render("account/login", {
+		title: "Login",
+		nav,
+		login,
+		errors: null,
+		account_email,
 	 })
 	return
 	}
@@ -110,12 +118,187 @@ async function accountLogin(req, res) {
 
    async function accountManagment(req, res, next) {
 	let nav = await utilities.getNav()
+	const login =  utilities.Login(res.locals.accountData)
+	const invManagement = utilities.inventoryManagement(res.locals.accountData)
+	const accountId = utilities.getUserId(res.locals.accountData)
+	const name = res.locals.accountData.account_firstname
 	res.render("account/account-management", {
 		title: "Account  Management",
 		nav,
+		login,
 		errors: null,
+		name,
+		invManagement,
+		accountId,
     })
 }
 
+/* ****************************************
+*  Update-Account information view
+* *************************************** */
+async function accountInfomation(req, res) {
+	let nav = await utilities.getNav()
+	const getAccountById = await accountModel.getAccountById(res.locals.accountData.account_id)
+	const login =  utilities.Login(getAccountById)
+	const { account_id, account_firstname, account_lastname, account_email} = getAccountById
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin,accountManagment }
+	if (getAccountById) {
+		res.render("account/update-account", {
+			title: "Edit Account",
+			nav,
+			errors: null,
+			login,
+			account_id, 
+			account_firstname, 
+			account_lastname, 
+			account_email,
+		})
+	} 
+}
+
+/* ****************************************
+*  Update account information
+* *************************************** */
+async function updateAccountInfomation(req, res) {
+	let nav = await utilities.getNav()
+	const { account_id, account_firstname, account_lastname, account_email} = req.body
+	const updateResult = await accountModel.updateAccontInformation(
+		account_id, account_firstname, account_lastname, account_email)
+	const login =  utilities.Login(req.body)
+
+	if (updateResult) {
+		req.flash(
+		"notice",
+		`Congratulations, your information has been updated.`
+		)
+		res.status(201).redirect("/account/")
+	} else {
+		res.status(501).render("./account/update-account", {
+			title: "Edit Account",
+			nav,
+			errors: null,
+			login,
+			account_id, 
+			account_firstname, 
+			account_lastname, 
+			account_email,
+		})
+	}
+}
+
+/* ****************************************
+*  Update account password
+* *************************************** */
+async function updateAccountPassword(req, res) {
+	let nav = await utilities.getNav()
+	const getAccountById = await accountModel.getAccountById(res.locals.accountData.account_id)
+	const { account_id, account_password,} = getAccountById
+
+	let hashedPassword = await bcrypt.hashSync(account_password, 10)
+	const updateResult = await accountModel.updateAccontPwd(account_id, hashedPassword)
+
+	if (updateResult) {
+		req.flash(
+		"notice",
+		`Congratulations, your password has been updated.`
+		)
+		res.status(201).redirect("/account/")
+	} else {
+		res.status(501).render("./account/update-account", {
+			title: "Edit Account",
+			nav,
+			errors: null,
+			login,
+			account_id, 
+			account_firstname, 
+			account_lastname, 
+			account_email,
+		})
+	}
+}
+/* ****************************************
+*  Update-Account information view
+* *************************************** */
+async function accountInfomation(req, res) {
+	let nav = await utilities.getNav()
+	const getAccountById = await accountModel.getAccountById(res.locals.accountData.account_id)
+	const login =  utilities.Login(getAccountById)
+	const { account_id, account_firstname, account_lastname, account_email} = getAccountById
+
+	if (getAccountById) {
+		res.render("account/update-account", {
+			title: "Edit Account",
+			nav,
+			errors: null,
+			login,
+			account_id, 
+			account_firstname, 
+			account_lastname, 
+			account_email,
+		})
+	} 
+}
+
+/* ****************************************
+*  Update account information
+* *************************************** */
+async function updateAccountInfomation(req, res) {
+	let nav = await utilities.getNav()
+	const { account_id, account_firstname, account_lastname, account_email} = req.body
+	const updateResult = await accountModel.updateAccontInformation(
+		account_id, account_firstname, account_lastname, account_email)
+	const login =  utilities.Login(req.body)
+
+	if (updateResult) {
+		req.flash(
+		"notice",
+		`Congratulations, your information has been updated.`
+		)
+		res.status(201).redirect("/account/")
+	} else {
+		res.status(501).render("./account/update-account", {
+			title: "Edit Account",
+			nav,
+			errors: null,
+			login,
+			account_id, 
+			account_firstname, 
+			account_lastname, 
+			account_email,
+		})
+	}
+}
+
+/* ****************************************
+*  Update account password
+* *************************************** */
+async function updateAccountPassword(req, res) {
+	let nav = await utilities.getNav()
+	const getAccountById = await accountModel.getAccountById(res.locals.accountData.account_id)
+	const { account_id, account_password,} = getAccountById
+
+	let hashedPassword = await bcrypt.hashSync(account_password, 10)
+	const updateResult = await accountModel.updateAccontPwd(account_id, hashedPassword)
+
+	if (updateResult) {
+		req.flash(
+		"notice",
+		`Congratulations, your password has been updated.`
+		)
+		res.status(201).redirect("/account/")
+	} else {
+		res.status(501).render("./account/update-account", {
+			title: "Edit Account",
+			nav,
+			errors: null,
+			login,
+			account_id, 
+			account_firstname, 
+			account_lastname, 
+			account_email,
+		})
+	}
+}
+
+
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin,accountManagment, accountInfomation, updateAccountInfomation, updateAccountPassword }

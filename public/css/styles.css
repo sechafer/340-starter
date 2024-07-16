@@ -232,6 +232,9 @@ button:hover, #pswdBtn:hover {
   background-color: rgb(153, 171, 182);
   color: #ffffff;
 }
+span {
+  padding: 0;
+}
 label, #classificasion_id,#classificasion {
   padding-left: 0;
   padding-bottom: 0;

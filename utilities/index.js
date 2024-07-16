@@ -1,3 +1,4 @@
+const { body } = require("express-validator")
 const invModel = require("../models/inventory-model")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
@@ -25,6 +26,33 @@ Util.getNav = async function (req, res, next) {
   })
   list += "</ul>"
   return list
+}
+
+/* ************************
+ * Constructs the login section 
+ ************************** */
+Util.Login = function (accountData=null) {
+  let login = '<div id="tools">'
+  if (accountData == null) {
+      login += '<a href="\/account\/login" title="Click to login">My Account</a>'
+  } else {
+      login += `<a href="/account" title="Welcome">Welcome ${accountData.account_firstname} </a>`
+      login += '<a href="/#" title="Logout"> Logout</a>'
+  }
+  login += "</div>"
+  return login
+}
+
+/* ************************
+* Constructs the Invenotry management section 
+************************** */
+Util.inventoryManagement = function (accountData=null) {
+  let invManagement = ""
+  if (accountData.account_type == "Admin" || accountData.account_type == "Employee" ) {
+      invManagement += '<h3>Inventory Management</h3>'
+      invManagement += '<p><a href="/inv" title="Manage inventory">Manage Inventory</a></p>'
+  }
+  return invManagement
 }
 
 /* **************************************
@@ -160,4 +188,12 @@ Util.checkLogin = (req, res, next) => {
   }
  }
 
+ Util.getUserId = (accountData) => {
+  if (accountData) {
+    return accountData.account_id
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+ }
 module.exports = Util
